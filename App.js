@@ -5,14 +5,18 @@ import { createStackNavigator } from 'react-navigation-stack';
 
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
+import MemoListScreen from "./screens/MemoListScreen";
+import MemoDetailScreen from "./screens/MemoDetailScreen";
 
 
 export default class App extends React.Component {
   render() {
 
     const MainTab = createStackNavigator({
-      login: { screen: LoginScreen },
-      signup: { screen: SignupScreen }
+      login:      { screen: LoginScreen },
+      signup:     { screen: SignupScreen },
+      memoList:   { screen: MemoListScreen },
+      memoDetail: { screen: MemoDetailScreen }
     });
 
     const NavigatorTab = createAppContainer(MainTab);
