@@ -10,6 +10,7 @@ import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import MemoListScreen from "./screens/MemoListScreen";
 import MemoDetailScreen from "./screens/MemoDetailScreen";
+import MemoCreateScreen from "./screens/MemoCreateScreen";
 
 
 const firebaseConfig = {
@@ -33,7 +34,8 @@ export default class App extends React.Component {
       login:      { screen: LoginScreen },
       signup:     { screen: SignupScreen },
       memoList:   { screen: MemoListScreen },
-      memoDetail: { screen: MemoDetailScreen }
+      memoDetail: { screen: MemoDetailScreen },
+      memoCreate: { screen: MemoCreateScreen }
     });
 
     const NavigatorTab = createAppContainer(MainTab);

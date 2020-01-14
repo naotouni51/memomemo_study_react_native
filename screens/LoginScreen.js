@@ -4,8 +4,8 @@ import firebase from "firebase";
 
 export default class LoginScreen extends React.Component {
   state = {
-    email: '',
-    password: ''
+    email: 'test@gmail.com',
+    password: 'password'
   }
 
   login() {
@@ -38,6 +38,7 @@ export default class LoginScreen extends React.Component {
           autoCapitalize="none"
           autoCorrect={false}
           placeholder="Password"
+          secureTextEntry
         />
         <TouchableOpacity onPress={() => this.login()}>
           <Text>ログイン</Text>

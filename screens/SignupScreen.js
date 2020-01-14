@@ -39,6 +39,7 @@ export default class SignupScreen extends React.Component {
           autoCapitalize="none"
           autoCorrect={false}
           placeholder="Password"
+          secureTextEntry
         />
 
         <TouchableOpacity onPress={() => this.signup()}>
