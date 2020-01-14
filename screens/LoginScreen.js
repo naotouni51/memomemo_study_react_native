@@ -1,11 +1,32 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 
 export default class LoginScreen extends React.Component {
+  state = {
+    email: '',
+    password: ''
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>ログイン画面</Text>
+        <TextInput
+          style={styles.input}
+          value={this.state.email}
+          onChangeText={ (text) => { this.setState({ email: text }) }}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="Email Address"
+        />
+
+        <TextInput
+          style={styles.input}
+          value={this.state.password}
+          onChangeText={ (text) => { this.setState({ password: text }) }}
+          autoCapitalize="none"
+          autoCorrect={false}
+          placeholder="Password"
+        />
         <TouchableOpacity onPress={() => this.props.navigation.navigate('memoList')}>
           <Text>ログイン</Text>
         </TouchableOpacity>
@@ -24,4 +45,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  input:{
+    borderWidth: 1,
+    padding: 5,
+    marginBottom: 10,
+    width: '80%',
+  }
 });
