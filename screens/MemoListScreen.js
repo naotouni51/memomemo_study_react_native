@@ -1,22 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 export default class MemoListScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.memoList}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail')} style={styles.memoList}>
           <Text style={styles.memoListText}>メモその1</Text>
-        </View>
-        <View style={styles.memoList}>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail')} style={styles.memoList}>
           <Text style={styles.memoListText}>メモその2</Text>
-        </View>
-        <View style={styles.memoList}>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail')} style={styles.memoList}>
           <Text style={styles.memoListText}>メモその3</Text>
-        </View>
-        <View style={styles.memoList}>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail')} style={styles.memoList}>
           <Text style={styles.memoListText}>メモその4</Text>
-        </View>
+        </TouchableOpacity>
       </View>
     );
   }
