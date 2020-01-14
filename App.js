@@ -30,7 +30,7 @@ export default class App extends React.Component {
   render() {
 
     const MainTab = createStackNavigator({
-      // login:      { screen: LoginScreen },
+      login:      { screen: LoginScreen },
       signup:     { screen: SignupScreen },
       memoList:   { screen: MemoListScreen },
       memoDetail: { screen: MemoDetailScreen }

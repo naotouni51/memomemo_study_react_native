@@ -9,6 +9,9 @@ export default class LoginScreen extends React.Component {
         <TouchableOpacity onPress={() => this.props.navigation.navigate('memoList')}>
           <Text>ログイン</Text>
         </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('signup')}>
+          <Text>アカウント登録はこちら</Text>
+        </TouchableOpacity>
       </View>
     );
   }
