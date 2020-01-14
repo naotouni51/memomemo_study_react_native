@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
+import firebase from "firebase";
 
 export default class SignupScreen extends React.Component {
   state = {
@@ -7,6 +8,16 @@ export default class SignupScreen extends React.Component {
     password: ''
   }
 
+  signup() {
+    firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .then((user) => {
+        //console.log('success!', user);
+        this.props.navigation.navigate('memoList')
+      })
+      .catch( (error) => {
+        console.log(error);
+      }); 
+  }
 
   render() {
     return (
@@ -30,7 +41,7 @@ export default class SignupScreen extends React.Component {
           placeholder="Password"
         />
 
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('memoList')}>
+        <TouchableOpacity onPress={() => this.signup()}>
           <Text>サインアップ</Text>
         </TouchableOpacity>
       </View>
