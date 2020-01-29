@@ -1,31 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 
 export default class MemoListScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+
         <View style={styles.memoList}>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail')}>
             <Text style={styles.memoListText}>メモその1</Text>
           </TouchableOpacity>
         </View>
-        <View style={styles.memoList}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail')}>
-            <Text style={styles.memoListText}>メモその2</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.memoList}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail')}>
-            <Text style={styles.memoListText}>メモその3</Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.memoList}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail')}>
-            <Text style={styles.memoListText}>メモその4</Text>
-          </TouchableOpacity>
-        </View>
+
+        {/* <FlatList data={this.state.memoList} renderItem={this.renderMemo.bind(this)} /> */}
 
         <View style={styles.createButton}>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('memoCreate')}>

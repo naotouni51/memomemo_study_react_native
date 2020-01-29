@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import firebase from "firebase";
 
 export default class MemoCreateScreen extends React.Component {
   state = {
@@ -7,7 +8,20 @@ export default class MemoCreateScreen extends React.Component {
   }
 
   createMemo() {
-    this.props.navigation.goBack()
+    const { currentUser } = firebase.auth();
+
+    const db = firebase.firestore();
+    db.collection(`users/${currentUser.uid}/memos`).add({
+      content: this.state.content,
+      createdOn: firebase.firestore.Timestamp.now(),
+    })
+      .then((docRef) => {
+        //console.log(docRef.id);
+        this.props.navigation.goBack();
+      })
+      .catch((error) => {
+        console.log(error)
+      });
   }
 
   render() {
