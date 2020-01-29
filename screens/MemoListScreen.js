@@ -26,7 +26,7 @@ export default class MemoListScreen extends React.Component {
   renderItem({item}) {
     return (
       <View style={styles.memoList}>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail')}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('memoDetail', {memo: item})}>
           <Text style={styles.memoListText}>{item.content.substring(0, 10)}</Text>
           {/* <Text style={styles.memoDate}>{String(item.createdOn.toDate())}</Text> */}
         </TouchableOpacity>

@@ -28,7 +28,6 @@ export default class MemoCreateScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.textInputContainer}>
-          <Text>メモ作成画面</Text>
           <TextInput
             style={styles.memoEditInput}
             multiline
