@@ -9,10 +9,26 @@ export default class MemoDetailScreen extends React.Component {
   }
 
   componentDidMount() {
-    // console.log(this.props.navigation.state.params.memo)
+    console.log(this.props.navigation.state.params.memo.createdOn)
     this.setState({ memo: this.props.navigation.state.params.memo })
     this.setState({ content: this.props.navigation.state.params.memo.content})
   }
+
+  formatDate(date, format) {
+    if (!format) format = 'YYYY-MM-DD hh:mm:ss.SSS';
+    format = format.replace(/YYYY/g, date.getFullYear());
+    format = format.replace(/MM/g, ('0' + (date.getMonth() + 1)).slice(-2));
+    format = format.replace(/DD/g, ('0' + date.getDate()).slice(-2));
+    format = format.replace(/hh/g, ('0' + date.getHours()).slice(-2));
+    format = format.replace(/mm/g, ('0' + date.getMinutes()).slice(-2));
+    format = format.replace(/ss/g, ('0' + date.getSeconds()).slice(-2));
+    if (format.match(/S/g)) {
+      var milliSeconds = ('00' + date.getMilliseconds()).slice(-3);
+      var length = format.match(/S/g).length;
+      for (var i = 0; i < length; i++) format = format.replace(/S/, milliSeconds.substring(i, i + 1));
+    }
+    return format;
+  };
 
   editMemo() {
     // console.log('編集')
@@ -50,6 +66,7 @@ export default class MemoDetailScreen extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.textInputContainer}>
+          <Text style={styles.dateText}>{this.formatDate(this.props.navigation.state.params.memo.createdOn.toDate(), 'YYYY年MM月DD日 hh:mm:ss')}</Text>
           <TextInput
             style={styles.memoEditInput}
             multiline
@@ -77,6 +94,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+  },
+  dateText: {
+    fontSize: 12,
+    color: 'gray'
   },
   textInputContainer: {
     flex: 1,
