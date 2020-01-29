@@ -34,6 +34,18 @@ export default class MemoDetailScreen extends React.Component {
     });
   }
 
+  deleteMemo() {
+    const { currentUser } = firebase.auth();
+    const db = firebase.firestore();
+    db.collection(`users/${currentUser.uid}/memos`).doc(this.state.memo.key)
+    .delete()
+    .then(() => {
+      this.props.navigation.goBack();      
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -46,11 +58,16 @@ export default class MemoDetailScreen extends React.Component {
             onChangeText={ (text) => {this.setState({ content: text })} }
           />
         </View>
-        <View style={styles.saveButton}>
-          <TouchableOpacity onPress={() => this.editMemo()}>
-            <Text style={styles.saveButtonText}>編集！</Text>
+
+        <View style={{flexDirection: 'row'}}>
+          <TouchableOpacity style={styles.deleteButton} onPress={() => this.deleteMemo()}>
+            <Text style={styles.buttonText}>削除！</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.saveButton} onPress={() => this.editMemo()}>
+            <Text style={styles.buttonText}>編集！</Text>
           </TouchableOpacity>
         </View>
+
       </View>
     );
   }
@@ -67,15 +84,24 @@ const styles = StyleSheet.create({
   },
   memoEditInput: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    fontSize: 20,
   },
   saveButton: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'yellowgreen',
     height: 50
   },
-  saveButtonText: {
+  deleteButton: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'red',
+    height: 50
+  },
+  buttonText: {
     fontSize: 30
   }
 });

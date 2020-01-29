@@ -40,11 +40,10 @@ export default class MemoListScreen extends React.Component {
 
         <FlatList data={this.state.memoList} renderItem={(item) => this.renderItem(item)} />
 
-        <View style={styles.createButton}>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('memoCreate')}>
-            <Text style={styles.createButtonText}>+</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.createButton} onPress={() => this.props.navigation.navigate('memoCreate')}>
+          <Text style={styles.createButtonText}>+</Text>
+        </TouchableOpacity>
+
 
       </View>
     );

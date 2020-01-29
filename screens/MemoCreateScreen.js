@@ -36,11 +36,9 @@ export default class MemoCreateScreen extends React.Component {
             onChangeText={ (text) => {this.setState({ content: text })} }
           />
         </View>
-        <View style={styles.saveButton}>
-          <TouchableOpacity onPress={() => this.createMemo()}>
-            <Text style={styles.saveButtonText}>保存！</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.saveButton} onPress={() => this.createMemo()}>
+          <Text style={styles.saveButtonText}>保存！</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -57,7 +55,8 @@ const styles = StyleSheet.create({
   },
   memoEditInput: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    fontSize: 20,
   },
   saveButton: {
     justifyContent: 'center',
